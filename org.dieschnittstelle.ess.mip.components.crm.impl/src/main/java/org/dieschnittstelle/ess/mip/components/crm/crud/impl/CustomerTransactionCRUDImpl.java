@@ -129,7 +129,7 @@ public class CustomerTransactionCRUDImpl implements CustomerTransactionCRUD {
 		// CONDITION on the joined items, using a parameter, the value of which can be passed later on
 		// (rather than passing the value directly to the equal() condition)
 		ParameterExpression<Long> itemErpProductIdCondition = cb.parameter(Long.class);
-		queryDescription.where(cb.equal(joineditem.get("erpProductId"),productId));
+		queryDescription.where(cb.equal(joineditem.get("erpProductId"),itemErpProductIdCondition));
 
 		// SELECT part, which specifies which attribute of the selected CustomerTransactions
 		// specified in FROM will be selected for the result set
