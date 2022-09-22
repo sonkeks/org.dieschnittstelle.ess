@@ -57,7 +57,7 @@ public class AccessRESTServiceWithInterpreter {
         Address addr = new Address("Luxemburger Strasse", "10", "13353",
                 "Berlin");
         StationaryTouchpoint tp = new StationaryTouchpoint(-1,
-                "BHT Verkaufsstand", addr);
+                "BHT WSV Verkaufsstand", addr);
         tp = (StationaryTouchpoint)serviceProxy.createTouchpoint(tp);
         show("created: " + tp);
 
@@ -79,7 +79,7 @@ public class AccessRESTServiceWithInterpreter {
 //		 */
 //		// change the name
 //		step();
-//		tp.setName("BHT Mensa");
+//		tp.setName("BHT WSV Mensa");
 //
 //
 //		tp = serviceProxy.updateTouchpoint(tp.getId(), tp);
