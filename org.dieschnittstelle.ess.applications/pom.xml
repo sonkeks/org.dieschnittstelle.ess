@@ -51,6 +51,7 @@
         <module>../org.dieschnittstelle.ess.mip.webapp</module>
         <module>../org.dieschnittstelle.ess.mip.client</module>
         <module>../org.dieschnittstelle.ess.wsv.client</module>
+        <module>../org.dieschnittstelle.ess.mip.ms.shared.webapp</module>
     </modules>
     
 </project>

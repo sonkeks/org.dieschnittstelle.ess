@@ -2,13 +2,17 @@ package org.dieschnittstelle.ess.mip.components.crm.crud.impl;
 
 import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.entities.crm.AbstractTouchpoint;
+import org.dieschnittstelle.ess.entities.crm.Customer;
 import org.dieschnittstelle.ess.entities.crm.CustomerTransaction;
+import org.dieschnittstelle.ess.entities.crm.CustomerTransactionShoppingCartItem;
 import org.dieschnittstelle.ess.utils.interceptors.Logged;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.*;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +76,7 @@ public class CustomerTransactionCRUDImpl implements CustomerTransactionCRUD {
 	public List<CustomerTransaction> readAllTransactionsForCustomer(
 			long customerId) {
 		Query query = em
-				.createQuery("SELECT t FROM CustomerTransaction t WHERE t.customer.id = "
+				.createQuery("SELECT DISTINCT t FROM CustomerTransaction t WHERE t.customer.id = "
 						+ customerId);
 		logger.info("readAllTransactionsForCustomer(): created query: " + query);
 
@@ -87,22 +91,67 @@ public class CustomerTransactionCRUDImpl implements CustomerTransactionCRUD {
 
 	@Override
 	public List<CustomerTransaction> readAllTransactions() {
-		return em.createQuery("SELECT t FROM CustomerTransaction t").getResultList();
+		return em.createQuery("SELECT DISTINCT t FROM CustomerTransaction t").getResultList();
 	}
 
 	@Override
 	public List<CustomerTransaction> readAllTransactionsForProduct(long productId) {
 		// this is an example for a jpql query using JOIN to express conditions on
 		// entities to which entities are related via a ToMany relation
-		Query query = em.createQuery("SELECT t FROM CustomerTransaction t JOIN t.items item WHERE item.erpProductId = " + productId);
+		Query query = em.createQuery("SELECT DISTINCT t FROM CustomerTransaction t JOIN t.items item WHERE item.erpProductId = " + productId);
 		return query.getResultList();
+	}
+
+	@Override
+	public List<Customer> readAllCustomersForProduct(long productId) {
+		// this shows a jpql query with JOIN using the structured creation of queries
+		// with CriteriaBuilder as an alternative to string concatenation
+		// (note that this functionality could also have been brought about by calling
+		// readAllTransactionsForProduct() and collection the customers from the transactions)
+
+		// this is how the query would be created and executed using string concatenation
+		if (false) {
+			Query query = em.createQuery("SELECT DISTINCT t.customer FROM CustomerTransaction t JOIN t.items item WHERE item.erpProductId = " + productId);
+			return query.getResultList();
+		}
+
+		// this is the same query using the criteria builder
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+
+		// which type of data shall be retrieved by the query?
+		CriteriaQuery<Customer> queryDescription = cb.createQuery(Customer.class);
+
+		// FROM part of the query
+		Root<CustomerTransaction> from = queryDescription.from(CustomerTransaction.class);
+		// JOIN
+		Join<CustomerTransaction, CustomerTransactionShoppingCartItem> joineditem = from.join("items");
+
+		// CONDITION on the joined items, using a parameter, the value of which can be passed later on
+		// (rather than passing the value directly to the equal() condition)
+		ParameterExpression<Long> itemErpProductIdCondition = cb.parameter(Long.class);
+		queryDescription.where(cb.equal(joineditem.get("erpProductId"),productId));
+
+		// SELECT part, which specifies which attribute of the selected CustomerTransactions
+		// specified in FROM will be selected for the result set
+		queryDescription.select(from.get("customer"));
+		// specify that we want to have distinct results
+		queryDescription.distinct(true);
+
+		TypedQuery<Customer> actualQuery = em.createQuery(queryDescription);
+
+		// specify the parameter value for the product id
+		actualQuery.setParameter(itemErpProductIdCondition,productId);
+
+		// execute the query
+		logger.info("running criteria query: " + actualQuery);
+		return actualQuery.getResultList();
 	}
 
 	@Override
 	public List<CustomerTransaction> readAllTransactionsForTouchpointAndCustomer(
 			long touchpointId, long customerId) {
 		Query query = em
-				.createQuery("SELECT t FROM CustomerTransaction t WHERE t.customer.id = "
+				.createQuery("SELECT DISTINCT t FROM CustomerTransaction t WHERE t.customer.id = "
 						+ customerId
 						+ " AND t.touchpoint.id = "
 						+ touchpointId);

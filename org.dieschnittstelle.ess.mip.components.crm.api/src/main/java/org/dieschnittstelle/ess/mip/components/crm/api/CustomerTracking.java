@@ -6,6 +6,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import jdk.jfr.Timespan;
+import org.dieschnittstelle.ess.entities.crm.Customer;
 import org.dieschnittstelle.ess.entities.crm.CustomerTransaction;
 
 @Path("/tracking")
@@ -23,5 +24,10 @@ public interface CustomerTracking {
 	@GET
 	@Path("/transactions-for-product")
 	public List<CustomerTransaction> readTransactionsForProduct(@QueryParam("productId") long productId);
+
+	@GET
+	@Path("/customers-for-product")
+	public List<Customer> readAllCustomersForProduct(@QueryParam("productId") long productId);
+
 
 }

@@ -7,6 +7,7 @@ import javax.annotation.PreDestroy;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import org.dieschnittstelle.ess.entities.crm.Customer;
 import org.dieschnittstelle.ess.mip.components.crm.api.CustomerTracking;
 import org.dieschnittstelle.ess.entities.crm.CustomerTransactionShoppingCartItem;
 import org.dieschnittstelle.ess.entities.crm.CustomerTransaction;
@@ -61,6 +62,11 @@ public class CustomerTrackingImpl implements CustomerTracking {
 	@Override
 	public List<CustomerTransaction> readTransactionsForProduct(long productId) {
 		return customerTransactionCRUD.readAllTransactionsForProduct(productId);
+	}
+
+	@Override
+	public List<Customer> readAllCustomersForProduct(long productId) {
+		return customerTransactionCRUD.readAllCustomersForProduct(productId);
 	}
 
 	@PostConstruct

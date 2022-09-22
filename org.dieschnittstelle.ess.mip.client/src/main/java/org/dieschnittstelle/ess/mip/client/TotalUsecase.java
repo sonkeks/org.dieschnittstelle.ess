@@ -1,6 +1,7 @@
 package org.dieschnittstelle.ess.mip.client;
 
 import org.apache.logging.log4j.Logger;
+import org.dieschnittstelle.ess.entities.crm.Customer;
 import org.dieschnittstelle.ess.mip.client.shopping.ShoppingBusinessDelegate;
 import org.dieschnittstelle.ess.mip.client.shopping.ShoppingSession;
 import org.dieschnittstelle.ess.mip.client.shopping.PurchaseServiceClient;
@@ -15,8 +16,10 @@ import org.dieschnittstelle.ess.entities.crm.CampaignExecution;
 import org.dieschnittstelle.ess.entities.crm.CustomerTransaction;
 import org.dieschnittstelle.ess.mip.client.apiclients.*;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import static org.dieschnittstelle.ess.mip.client.Constants.*;
 import static org.dieschnittstelle.ess.utils.Utils.step;
@@ -230,6 +233,16 @@ public class TotalUsecase {
 		// we finally show transactions for some selected product
 		trans = customerTracking.readTransactionsForProduct(CAMPAIGN_1.getId());
 		logger.info("transactions for campaign with id " + CAMPAIGN_1.getId() + " are: " + trans);
+
+		List<Customer> customers = customerTracking.readAllCustomersForProduct(CAMPAIGN_1.getId());
+		logger.info("customers for campaign with id " + CAMPAIGN_1.getId() + " are: " + customers
+				.stream()
+				.map(c -> c.getFirstName() + " " + c.getLastName())
+				// as long as the ProductCRUD has not been implemented we will obtain
+				// name duplicates from the jpql query. Avoid irritation by forcing
+				// distinct customer names
+				.distinct()
+				.collect(Collectors.joining(", ")));
 
 	}
 

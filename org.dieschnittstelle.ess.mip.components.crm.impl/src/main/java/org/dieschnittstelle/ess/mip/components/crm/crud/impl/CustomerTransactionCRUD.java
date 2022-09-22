@@ -22,5 +22,6 @@ public interface CustomerTransactionCRUD {
 
 	public List<CustomerTransaction> readAllTransactionsForProduct(long productId);
 
+	public List<Customer> readAllCustomersForProduct(long productId);
 
 }
