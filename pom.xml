@@ -43,7 +43,8 @@
         <!-- For resteasy client versions starting with 4.4.2 there
          is an annoying polymorphic type validation issue which might be due to changed
          default settings for jackson. In case this issue occurs with the 4.4.1 version,
-         refresh the idea libs via the maven tool window -->
+         refresh the idea libs via the maven tool window. Note that with the 4.7.7.Final
+         version, this problem does not occur anymore -->
         <version.resteasy.client>4.7.7.Final</version.resteasy.client>
         <version.jackson>2.13.4</version.jackson>
         <version.httpclient>4.5.13</version.httpclient>
