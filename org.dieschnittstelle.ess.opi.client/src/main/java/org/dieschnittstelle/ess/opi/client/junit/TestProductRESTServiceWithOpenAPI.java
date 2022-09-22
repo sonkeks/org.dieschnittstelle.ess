@@ -107,9 +107,9 @@ public class TestProductRESTServiceWithOpenAPI {
 //
 //        /* this is for internally testing that campaigns can be written and read via the web api - not part of the exercise */
 //        Campaign campaign = (Campaign)client.createCampaign(CAMPAIGN);
-//        assertNotEquals("campaign can be created",(int)campaign.getId(),0);
+//        assertNotEquals("campaign can be created",0,(int)campaign.getId());
 //        assertNotNull("campaign contains bundles",campaign.getBundles());
-//        assertEquals("campaign contains correct number of bundles",campaign.getBundles().size(),2);
+//        assertEquals("campaign contains correct number of bundles",2,campaign.getBundles().size());
 //        assertNotNull("campaign bundles contain products",campaign.getBundles().get(0).getProduct());
 //    }
 

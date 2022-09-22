@@ -34,7 +34,7 @@ public class ProductBundle implements Serializable {
 		this.setProduct(product);
 	}
 
-	public AbstractProduct getProduct() {
+	public IndividualisedProductItem getProduct() {
 		return this.product;
 	}
 
