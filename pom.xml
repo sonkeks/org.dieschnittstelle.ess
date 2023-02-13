@@ -27,7 +27,6 @@
         <version.microprofile>5.0</version.microprofile>
         <version.jakartaee>9.1.0</version.jakartaee>
         <!-- server versions -->
-        <version.wildfly>25.0.0.Final</version.wildfly>
         <version.tomee.plugin>9.0.0</version.tomee.plugin>
         <version.tomee.server>9.0.0</version.tomee.server>
         <!-- additional jakarta libs versions -->
