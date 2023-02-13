@@ -1,7 +1,7 @@
 package org.dieschnittstelle.ess.mip.components.crm.crud.api;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 
 import org.dieschnittstelle.ess.entities.crm.Customer;
 

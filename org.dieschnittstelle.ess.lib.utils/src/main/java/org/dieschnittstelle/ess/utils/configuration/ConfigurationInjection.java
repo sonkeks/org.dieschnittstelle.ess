@@ -4,10 +4,10 @@ import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.utils.interceptors.LoggedInterceptor;
 import org.eclipse.microprofile.config.Config;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.Initialized;
-import javax.enterprise.event.Observes;
-import javax.inject.Inject;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Initialized;
+import jakarta.enterprise.event.Observes;
+import jakarta.inject.Inject;
 
 /*
  * this class makes the microprofile configuration available to the rest of the application, see https://rieckpil.de/whatis-eclipse-microprofile-config/

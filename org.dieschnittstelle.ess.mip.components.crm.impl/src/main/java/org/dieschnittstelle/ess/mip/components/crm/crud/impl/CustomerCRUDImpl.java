@@ -1,9 +1,9 @@
 package org.dieschnittstelle.ess.mip.components.crm.crud.impl;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 
 import org.dieschnittstelle.ess.entities.crm.Customer;
 import org.apache.logging.log4j.Logger;

@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.dieschnittstelle.ess.entities.crm.AbstractTouchpoint;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 
 @Path("/touchpoints")
 @Produces({MediaType.APPLICATION_JSON})

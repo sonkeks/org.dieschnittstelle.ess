@@ -93,7 +93,7 @@ public class JAXRSClientInterpreter implements InvocationHandler {
 
         // TODO: check which of the http method annotation is present and instantiate request accordingly passing the url
 
-        // TODO: add a header on the request declaring that we accept json (for header names, you can use the constants declared in javax.ws.rs.core.HttpHeaders, for content types use the constants from javax.ws.rs.core.MediaType;)
+        // TODO: add a header on the request declaring that we accept json (for header names, you can use the constants declared in jakarta.ws.rs.core.HttpHeaders, for content types use the constants from jakarta.ws.rs.core.MediaType;)
 
         // if we need to send the method argument in the request body we need to declare an entity
         ByteArrayEntity bae = null;

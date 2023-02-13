@@ -24,15 +24,15 @@
         <version.esslibs>1.0-SNAPSHOT</version.esslibs>
         <revision>${version.esslibs}</revision>
         <!-- specs versions -->
-        <version.microprofile>4.1</version.microprofile>
-        <version.jakartaee>8.0.0</version.jakartaee>
+        <version.microprofile>5.0</version.microprofile>
+        <version.jakartaee>9.1.0</version.jakartaee>
         <!-- server versions -->
         <version.wildfly>25.0.0.Final</version.wildfly>
-        <version.tomee.plugin>8.0.9</version.tomee.plugin>
-        <version.tomee.server>8.0.9</version.tomee.server>
+        <version.tomee.plugin>9.0.0</version.tomee.plugin>
+        <version.tomee.server>9.0.0</version.tomee.server>
         <!-- additional jakarta libs versions -->
-        <version.jpa>2.2.3</version.jpa>
-        <version.transactionapi>1.3.3</version.transactionapi>
+        <version.jpa>3.1.0</version.jpa>
+        <version.transactionapi>2.0.1</version.transactionapi>
         <!-- other libs -->
         <version.h2>1.4.197</version.h2>
         <version.log4j>2.17.1</version.log4j>
@@ -44,7 +44,7 @@
          is an annoying polymorphic type validation issue which might be due to changed
          default settings for jackson. In case this issue occurs with the 4.4.1 version,
          refresh the idea libs via the maven tool window -->
-        <version.resteasy.client>4.4.1.Final</version.resteasy.client>
+        <version.resteasy.client>6.2.2.Final</version.resteasy.client>
         <version.jackson>2.13.4</version.jackson>
         <version.httpclient>4.5.13</version.httpclient>
         <version.httpasyncclient>4.1.5</version.httpasyncclient>
