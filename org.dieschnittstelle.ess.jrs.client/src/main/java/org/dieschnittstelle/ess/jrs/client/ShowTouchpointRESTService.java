@@ -1,5 +1,6 @@
 package org.dieschnittstelle.ess.jrs.client;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
@@ -7,6 +8,7 @@ import org.dieschnittstelle.ess.entities.crm.Address;
 import org.dieschnittstelle.ess.entities.crm.StationaryTouchpoint;
 import org.dieschnittstelle.ess.jrs.ITouchpointCRUDService;
 import org.dieschnittstelle.ess.utils.Utils;
+import org.dieschnittstelle.ess.utils.jsonb.ResteasyLaissezFaireJacksonProvider;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 
 import jakarta.ws.rs.client.Client;
@@ -30,14 +32,16 @@ public class ShowTouchpointRESTService {
 		/*
 		 * create a client for the web service passing the interface
 		 */
-		Client client = ClientBuilder.newBuilder().build();
+		Client client = ClientBuilder.newBuilder()
+				.build()
+				.register(ResteasyLaissezFaireJacksonProvider.class);
 		ResteasyWebTarget target = (ResteasyWebTarget)client.target("http://localhost:8080/api/" + (async ? "async/" : ""));
 		ITouchpointCRUDService serviceProxy = target.proxy(ITouchpointCRUDService.class);
 
 		show("serviceProxy: " + serviceProxy + " of class: " + serviceProxy.getClass());
 
 		// 1) read out all touchpoints
-		List<StationaryTouchpoint> touchpoints = (List)serviceProxy.readAllTouchpoints();
+		List<StationaryTouchpoint> touchpoints = new ArrayList<>();//List)serviceProxy.readAllTouchpoints();
 		logger.info("read touchpoints: " + touchpoints);
 
 		// 2) delete the touchpoint after next console input
