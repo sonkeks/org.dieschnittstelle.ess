@@ -42,10 +42,6 @@ public class LoggedInterceptor {
 	private synchronized Logger createNewLoggerForKlassname(String klassname) {
 		logger.info("createNewLogger(): classname is: " + klassname);
 
-		// if we run inside of wildfly, we will receive a proxy class, whose name
-		// should be truncated
-
-
 		Logger logger = org.apache.logging.log4j.LogManager.getLogger(klassname);
 		loggers.put(klassname, logger);
 

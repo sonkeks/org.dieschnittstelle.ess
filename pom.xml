@@ -10,7 +10,7 @@
     <name>ESS Deployment</name>
 
     <!-- these are the shared properties for deploying all server-side
-         components within a wildfly executable jar -->
+         components within a tomee executable jar -->
     <properties>
         <!-- mvn settings -->
         <!-- see: https://ralph.blog.imixs.com/2020/12/13/migrating-to-jakarta-ee-9/ -->
