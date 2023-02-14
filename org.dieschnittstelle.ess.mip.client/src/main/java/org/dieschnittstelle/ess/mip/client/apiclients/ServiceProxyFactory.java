@@ -10,6 +10,8 @@ import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 
+import org.dieschnittstelle.ess.jrs.client.jackson.LaissezFairePolymorphicJacksonProvider;
+
 import jakarta.ws.rs.client.*;
 import java.io.*;
 import java.util.*;
@@ -191,7 +193,7 @@ public class ServiceProxyFactory {
      * this creates the service registry using a single client instance, from which the web targets will be created
      */
     public void createServiceRegistry(String deployment) {
-        Client client = ClientBuilder.newBuilder().register(new LoggingFilter()).build();
+        Client client = ClientBuilder.newBuilder().register(new LoggingFilter()).register(LaissezFairePolymorphicJacksonProvider.class).build();
 
         // we iterate over the properties and create the registry. Note that more specific base url assignments need
         // to precede less specific ones, therefore we sort the matching property in ascending order of their length
