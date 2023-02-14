@@ -43,7 +43,9 @@ import static org.dieschnittstelle.ess.utils.jsonb.JsonbJsonTypeInfoHandler.KLAS
 @DiscriminatorColumn(name="touchpointType", discriminatorType=DiscriminatorType.STRING)
 //@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS);
 //@Inheritance(strategy=InheritanceType.JOINED);
-@SequenceGenerator(name = "touchpoint_sequence", sequenceName = "touchpoint_id_sequence")
+
+
+//@SequenceGenerator(name = "touchpoint_sequence", sequenceName = "touchpoint_id_sequence")
 
 // jrs/jackson annotations
 // note that the value of the constant KLASSNAME_PROPERTY in this implementation is "@class". It
@@ -68,7 +70,7 @@ public abstract class AbstractTouchpoint implements Serializable, GenericCRUDEnt
 
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "touchpoint_sequence")
+	@GeneratedValue//(strategy = GenerationType.SEQUENCE, generator = "touchpoint_sequence")
 	protected long id;
 
 	/**
