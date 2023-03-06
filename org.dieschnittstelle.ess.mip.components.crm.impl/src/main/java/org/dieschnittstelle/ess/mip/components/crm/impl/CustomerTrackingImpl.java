@@ -2,10 +2,10 @@ package org.dieschnittstelle.ess.mip.components.crm.impl;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 import org.dieschnittstelle.ess.entities.crm.Customer;
 import org.dieschnittstelle.ess.mip.components.crm.api.CustomerTracking;

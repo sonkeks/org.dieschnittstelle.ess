@@ -2,11 +2,11 @@ package org.dieschnittstelle.ess.jrs;
 
 import java.util.List;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.NotFoundException;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.Context;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.ws.rs.NotFoundException;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.core.Context;
 
 import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.entities.crm.StationaryTouchpoint;

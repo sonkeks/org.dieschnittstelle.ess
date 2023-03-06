@@ -2,8 +2,8 @@ package org.dieschnittstelle.ess.mip.components.shopping.cart.api;
 
 import org.dieschnittstelle.ess.entities.shopping.ShoppingCartItem;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 import java.util.List;
 
 /**

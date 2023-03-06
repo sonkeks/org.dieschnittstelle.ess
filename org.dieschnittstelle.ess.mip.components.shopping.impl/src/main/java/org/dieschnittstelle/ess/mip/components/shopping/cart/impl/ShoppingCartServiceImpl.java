@@ -7,10 +7,10 @@ import org.dieschnittstelle.ess.mip.components.shopping.impl.EntityManagerProvid
 import org.dieschnittstelle.ess.utils.interceptors.Logged;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import java.util.List;
 
 /**

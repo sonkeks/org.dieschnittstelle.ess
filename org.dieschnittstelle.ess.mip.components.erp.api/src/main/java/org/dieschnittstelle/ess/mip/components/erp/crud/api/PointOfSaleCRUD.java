@@ -1,8 +1,8 @@
 package org.dieschnittstelle.ess.mip.components.erp.crud.api;
 
-import javax.inject.Qualifier;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import jakarta.inject.Qualifier;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

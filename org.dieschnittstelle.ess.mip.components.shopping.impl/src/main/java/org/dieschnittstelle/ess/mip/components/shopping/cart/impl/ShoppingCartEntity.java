@@ -3,9 +3,9 @@ package org.dieschnittstelle.ess.mip.components.shopping.cart.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.persistence.*;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+import jakarta.persistence.*;
 
 
 import org.dieschnittstelle.ess.entities.shopping.ShoppingCartItem;

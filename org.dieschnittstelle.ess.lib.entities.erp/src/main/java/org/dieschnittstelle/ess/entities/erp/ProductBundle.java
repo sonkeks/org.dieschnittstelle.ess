@@ -4,7 +4,7 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.logging.log4j.Logger;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 
 public class ProductBundle implements Serializable {
@@ -18,9 +18,6 @@ public class ProductBundle implements Serializable {
 
 	private long id;
 
-	// this had been changed to AbstractProduct due to some jboss/jackson serialisation issue
-	// in wildfly 18, which throws an error on unmarshalling, probably due to @JsonTypeInfo,
-	// but as we have migrated to TomEE in the meantime, we changed it back to the concrete class
 	private IndividualisedProductItem product;
 
 	private int units;

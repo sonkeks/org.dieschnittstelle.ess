@@ -3,7 +3,7 @@ package org.dieschnittstelle.ess.entities.crm;
 import java.io.Serializable;
 import org.apache.logging.log4j.Logger;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;

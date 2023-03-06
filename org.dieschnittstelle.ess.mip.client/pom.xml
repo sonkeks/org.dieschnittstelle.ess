@@ -86,6 +86,17 @@
             <artifactId>lib-utils</artifactId>
             <version>${revision}</version>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${version.commons.io}</version>
+        </dependency>
+        <!-- we use our jax-rs client project that contains the laissez-faire polymorphic type handler -->
+        <dependency>
+            <groupId>org.dieschnittstelle.ess</groupId>
+            <artifactId>jrs-client</artifactId>
+            <version>${revision}</version>
+        </dependency>
 
     </dependencies>
 

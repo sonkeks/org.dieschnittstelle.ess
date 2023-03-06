@@ -2,15 +2,19 @@ package org.dieschnittstelle.ess.jrs.client;
 
 import java.util.List;
 
+//import com.fasterxml.jackson.databind.JavaType;
+//import com.fasterxml.jackson.databind.cfg.MapperConfig;
+//import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
 import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.entities.crm.Address;
 import org.dieschnittstelle.ess.entities.crm.StationaryTouchpoint;
 import org.dieschnittstelle.ess.jrs.ITouchpointCRUDService;
+import org.dieschnittstelle.ess.jrs.client.jackson.LaissezFairePolymorphicJacksonProvider;
 import org.dieschnittstelle.ess.utils.Utils;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
 
 import static org.dieschnittstelle.ess.utils.Utils.*;
 
@@ -30,14 +34,19 @@ public class ShowTouchpointRESTService {
 		/*
 		 * create a client for the web service passing the interface
 		 */
-		Client client = ClientBuilder.newBuilder().build();
+		Client client = ClientBuilder.newBuilder()
+				.build()
+				// use our custom jackson provider that is less restrictive if it comes to dealing with polymorphic types
+				// handled using @JsonTypeInfo
+				.register(LaissezFairePolymorphicJacksonProvider.class);
+
 		ResteasyWebTarget target = (ResteasyWebTarget)client.target("http://localhost:8080/api/" + (async ? "async/" : ""));
 		ITouchpointCRUDService serviceProxy = target.proxy(ITouchpointCRUDService.class);
 
 		show("serviceProxy: " + serviceProxy + " of class: " + serviceProxy.getClass());
 
 		// 1) read out all touchpoints
-		List<StationaryTouchpoint> touchpoints = (List)serviceProxy.readAllTouchpoints();
+		List<StationaryTouchpoint> touchpoints = serviceProxy.readAllTouchpoints();
 		logger.info("read touchpoints: " + touchpoints);
 
 		// 2) delete the touchpoint after next console input
