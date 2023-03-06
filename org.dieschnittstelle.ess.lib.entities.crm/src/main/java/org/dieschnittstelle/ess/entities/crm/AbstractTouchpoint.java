@@ -44,7 +44,7 @@ import static org.dieschnittstelle.ess.utils.jsonb.JsonbJsonTypeInfoHandler.KLAS
 //@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS);
 //@Inheritance(strategy=InheritanceType.JOINED);
 
-
+// do not use the sequence generator for the time being
 //@SequenceGenerator(name = "touchpoint_sequence", sequenceName = "touchpoint_id_sequence")
 
 // jrs/jackson annotations
@@ -70,7 +70,7 @@ public abstract class AbstractTouchpoint implements Serializable, GenericCRUDEnt
 
 	
 	@Id
-	@GeneratedValue//(strategy = GenerationType.SEQUENCE, generator = "touchpoint_sequence")
+	@GeneratedValue// for the time being, we do not use the sequence generator: (strategy = GenerationType.SEQUENCE, generator = "touchpoint_sequence")
 	protected long id;
 
 	/**
