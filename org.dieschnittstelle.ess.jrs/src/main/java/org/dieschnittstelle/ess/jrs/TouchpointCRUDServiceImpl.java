@@ -10,7 +10,6 @@ import jakarta.ws.rs.core.Context;
 
 import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.entities.crm.StationaryTouchpoint;
-import org.dieschnittstelle.ess.entities.crm.StationaryTouchpoint;
 import org.dieschnittstelle.ess.entities.GenericCRUDExecutor;
 
 public class TouchpointCRUDServiceImpl implements ITouchpointCRUDService {
@@ -56,6 +55,10 @@ public class TouchpointCRUDServiceImpl implements ITouchpointCRUDService {
     @Override
     public StationaryTouchpoint readTouchpoint(long id) {
         StationaryTouchpoint tp = (StationaryTouchpoint) this.touchpointCRUD.readObject(id);
+
+        // this shows how JAX-RS WebApplicationException can be used to return HTTP error status codes
+        // NOTE, HOWEVER, THAT FOR THE JRS EXERCISES null needs to be turned in case of non existence in order for the jUnit testcases
+        // to work properly
         if (tp != null) {
             return tp;
         } else {
