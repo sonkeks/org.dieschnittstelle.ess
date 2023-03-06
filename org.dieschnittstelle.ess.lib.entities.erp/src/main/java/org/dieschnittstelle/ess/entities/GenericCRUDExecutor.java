@@ -36,7 +36,7 @@ public class GenericCRUDExecutor<T extends GenericCRUDEntity> {
 	 * create the executor passing a file
 	 */
 	public GenericCRUDExecutor(File databaseFile) {
-		System.out.println("<constructor>: " + databaseFile);
+		System.out.println("<constructor>: " + databaseFile.getAbsolutePath());
 		this.objectsDatabaseFile = databaseFile;
 	}
 
