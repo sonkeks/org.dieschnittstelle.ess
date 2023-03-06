@@ -8,7 +8,7 @@ import java.util.List;
 @Path("/touchpoints")
 @Consumes({ "application/json" })
 @Produces({ "application/json" })
-public interface ITouchpointCRUDService {
+public interface ITouchpointCRUDServiceClient {
 	
 	@GET
 	public List<StationaryTouchpoint> readAllTouchpoints();
