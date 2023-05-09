@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+
 import java.util.List;
 
 @Path("opi/touchpoints")
@@ -37,23 +39,27 @@ public class TouchpointCRUDServiceOPIImpl {
     }
 
     @GET
+    @Operation(operationId = "readAllTouchpoints")
     public List<StationaryTouchpoint> readAllTouchpoints() {
         return (List)this.service.readAllTouchpoints();
     }
 
     @POST
+    @Operation(operationId = "createTouchpoint")
     public StationaryTouchpoint createTouchpoint(StationaryTouchpoint touchpoint) {
         return (StationaryTouchpoint) this.service.createTouchpoint( touchpoint);
     }
 
     @DELETE
     @Path("/{id}")
+    @Operation(operationId = "deleteTouchpoint")
     public boolean deleteTouchpoint(@PathParam("id") long id) {
         return this.service.deleteTouchpoint(id);
     }
 
     @GET
     @Path("/{id}")
+    @Operation(operationId = "readTouchpoint")
     public StationaryTouchpoint readTouchpoint(@PathParam("id") long id) {
         return (StationaryTouchpoint)this.service.readTouchpoint(id);
     }
