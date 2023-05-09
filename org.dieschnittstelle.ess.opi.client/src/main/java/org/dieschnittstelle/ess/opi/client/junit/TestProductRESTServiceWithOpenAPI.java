@@ -8,6 +8,7 @@ package org.dieschnittstelle.ess.opi.client.junit;
 //import org.dieschnittstelle.ess.opi.client.entities.Campaign;
 //import org.dieschnittstelle.ess.opi.client.entities.IndividualisedProductItem;
 //import org.dieschnittstelle.ess.opi.client.entities.ProductBundle;
+//import org.dieschnittstelle.ess.opi.client.entities.ProductType;
 //import org.junit.Before;
 //import org.junit.FixMethodOrder;
 //import org.junit.Test;
@@ -21,7 +22,7 @@ package org.dieschnittstelle.ess.opi.client.junit;
 //
 //@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestProductRESTServiceWithOpenAPI {
-
+//
 //    private ProductCRUDOpenAPIClient client;
 //
 //    private static IndividualisedProductItem PRODUCT_1 = new IndividualisedProductItem();
@@ -38,20 +39,30 @@ public class TestProductRESTServiceWithOpenAPI {
 //    private void prepareProducts() {
 //        // prepare the products
 //        PRODUCT_1.setName("Schrippe");
-//        PRODUCT_1.setProductType(IndividualisedProductItem.ProductTypeEnum.ROLL);
+//        PRODUCT_1.setId(0L);
+//        PRODUCT_1.setPrice(-1);
+//        PRODUCT_1.setProductType(ProductType.ROLL);
 //        PRODUCT_1.setExpirationAfterStocked(720);
 //
 //        PRODUCT_2.setName("Kirschplunder");
-//        PRODUCT_2.setProductType(IndividualisedProductItem.ProductTypeEnum.PASTRY);
+//        PRODUCT_2.setId(0L);
+//        PRODUCT_2.setPrice(-1);
+//        PRODUCT_2.setProductType(ProductType.PASTRY);
 //        PRODUCT_2.setExpirationAfterStocked(1080);
 //
 //        ProductBundle b1 = new ProductBundle();
+//        b1.setId(0L);
 //        b1.setUnits(10);
 //        b1.setProduct(PRODUCT_1);
 //        ProductBundle b2 = new ProductBundle();
+//        b2.setId(0L);
 //        b2.setUnits(3);
 //        b2.setProduct(PRODUCT_2);
 //        CAMPAIGN.setBundles(Arrays.asList(b1,b2));
+//        CAMPAIGN.setId(0L);
+//        CAMPAIGN.setPrice(-1);
+//        CAMPAIGN.setName("Testkampagne");
+//
 //    }
 //
 //    @Test
@@ -107,7 +118,7 @@ public class TestProductRESTServiceWithOpenAPI {
 //
 //        /* this is for internally testing that campaigns can be written and read via the web api - not part of the exercise */
 //        Campaign campaign = (Campaign)client.createCampaign(CAMPAIGN);
-//        assertNotEquals("campaign can be created",0,(int)campaign.getId());
+//        assertNotEquals("campaign can be created",(long)0L,(long)campaign.getId());
 //        assertNotNull("campaign contains bundles",campaign.getBundles());
 //        assertEquals("campaign contains correct number of bundles",2,campaign.getBundles().size());
 //        assertNotNull("campaign bundles contain products",campaign.getBundles().get(0).getProduct());

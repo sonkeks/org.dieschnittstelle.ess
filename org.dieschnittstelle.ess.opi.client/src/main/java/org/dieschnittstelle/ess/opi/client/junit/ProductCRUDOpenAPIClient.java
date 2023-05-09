@@ -14,7 +14,7 @@ package org.dieschnittstelle.ess.opi.client.junit;
 //import java.util.List;
 
 public class ProductCRUDOpenAPIClient {
-
+//
 //	private DefaultApi serviceProxy;
 //
 //	protected static Logger logger = org.apache.logging.log4j.LogManager.getLogger(ProductCRUDOpenAPIClient.class);
@@ -23,7 +23,7 @@ public class ProductCRUDOpenAPIClient {
 //
 //		// TODO: OPI1: instantiieren Sie das serviceProxy Attribut unter Verwendung der generierten Klassen, und beruecksichtigen
 //		//  Sie, dass bei der JSON Verarbeitung unbekannte Attribute ignoriert werden sollen.
-//        serviceProxy = null;
+//		serviceProxy = null;
 //	}
 //
 //	public IndividualisedProductItem createProduct(IndividualisedProductItem prod) {
@@ -42,18 +42,20 @@ public class ProductCRUDOpenAPIClient {
 //
 //
 //    public List<?> readAllProducts() {
-//		return serviceProxy.readAllProducts();
+//		List prods = serviceProxy.readAllProducts();
+//		System.out.println("products: " + prods);
+//		return prods;
 //	}
 //
 //	public IndividualisedProductItem updateProduct(IndividualisedProductItem update) {
 //		return serviceProxy.updateProduct(update.getId(),(IndividualisedProductItem)update);
 //	}
 //
-//	public boolean deleteProduct(int id) {
+//	public boolean deleteProduct(long id) {
 //		return serviceProxy.deleteProduct(id);
 //	}
 //
-//	public IndividualisedProductItem readProduct(int id) {
+//	public IndividualisedProductItem readProduct(long id) {
 //		return serviceProxy.readProduct(id);
 //	}
 
