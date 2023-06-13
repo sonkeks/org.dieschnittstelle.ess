@@ -119,6 +119,8 @@ public class TestProductCRUD {
 
 	@Test
 	public void g_getCampaignsForProduct() {
+		// create the campaign here
+		CAMPAIGN_2.setId(client.createProduct(CAMPAIGN_2).getId());
 		List<Long> campaignids = client.getCampaignsForProduct(PRODUCT_2.getId())
 				.stream()
 				.map(Campaign::getId)
