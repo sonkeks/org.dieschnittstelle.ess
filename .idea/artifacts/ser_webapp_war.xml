@@ -1,6 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" external-system-id="Maven" name="ser-webapp:war">
-    <output-path>$PROJECT_DIR$/org.dieschnittstelle.ess.ser/target</output-path>
-    <root id="archive" name="ser-webapp-1.0-SNAPSHOT.war" />
-  </artifact>
-</component>

@@ -1,6 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" external-system-id="Maven" name="jrs-webapp:war">
-    <output-path>$PROJECT_DIR$/org.dieschnittstelle.ess.jrs/target</output-path>
-    <root id="archive" name="jrs-webapp-1.0-SNAPSHOT.war" />
-  </artifact>
-</component>
