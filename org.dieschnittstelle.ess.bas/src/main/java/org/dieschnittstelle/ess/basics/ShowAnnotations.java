@@ -31,17 +31,26 @@ public class ShowAnnotations {
 	private static void showAttributes(Object instance) {
 		show("class is: " + instance.getClass());
 
-		// TODO BAS2: create a string representation of instance by iterating
-		//  over the object's attributes / fields as provided by its class
-		//  and reading out the attribute values. The string representation
-		//  will then be built from the field names and field values.
-		//  Note that only read-access to fields via getters or direct access
-		//  is required here.
+		try {
 
-		// TODO BAS3: if the new @DisplayAs annotation is present on a field,
-		//  the string representation will not use the field's name, but the name
-		//  specified in the the annotation. Regardless of @DisplayAs being present
-		//  or not, the field's value will be included in the string representation.
+			// TODO BAS2: create a string representation of instance by iterating
+			//  over the object's attributes / fields as provided by its class
+			//  and reading out the attribute values. The string representation
+			//  will then be built from the field names and field values.
+			//  Note that only read-access to fields via getters or direct access
+			//  is required here.
+
+			// TODO BAS3: if the new @DisplayAs annotation is present on a field,
+			//  the string representation will not use the field's name, but the name
+			//  specified in the the annotation. Regardless of @DisplayAs being present
+			//  or not, the field's value will be included in the string representation.
+
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("showAnnotations(): exception occurred: " + e,e);
+		}
+
 	}
 
 }
