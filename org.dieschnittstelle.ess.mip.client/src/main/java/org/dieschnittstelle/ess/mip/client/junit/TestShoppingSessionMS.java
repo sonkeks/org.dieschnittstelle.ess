@@ -10,7 +10,7 @@ import org.junit.Test;
 import static org.dieschnittstelle.ess.mip.client.Constants.*;
 import static org.junit.Assert.assertEquals;
 
-public class TestShoppingSessionMSD {
+public class TestShoppingSessionMS {
 
 	private StockSystemClient stockSystemClient;
 
