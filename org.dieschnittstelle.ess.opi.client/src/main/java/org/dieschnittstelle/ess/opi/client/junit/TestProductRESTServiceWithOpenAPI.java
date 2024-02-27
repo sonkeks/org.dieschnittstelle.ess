@@ -105,10 +105,6 @@ public class TestProductRESTServiceWithOpenAPI {
 //    public void e_delete() {
 //        /* DELETE */
 //        assertTrue("product can be deleted", client.deleteProduct(PRODUCT_1.getId()));
-//        // given the dependencies from the generator, the following test results in a NoSuchMethodError as
-//        // int jakarta.ws.rs.core.Response.getLength() is not available - which is supposedly due to the
-//        // null response we receive here
-////		assertNull("deleted product does not exist anymore", client.readProduct(PRODUCT_1.getId()));
 //        assertEquals("product list is reduced on delete", prodlistBefore.size() + 1, client.readAllProducts().size());
 //    }
 //

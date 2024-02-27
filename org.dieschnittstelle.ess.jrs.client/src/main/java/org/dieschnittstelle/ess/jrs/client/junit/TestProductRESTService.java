@@ -1,5 +1,6 @@
 package org.dieschnittstelle.ess.jrs.client.junit;
 
+import jakarta.ws.rs.NotFoundException;
 import org.dieschnittstelle.ess.entities.erp.*;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -82,7 +83,9 @@ public class TestProductRESTService {
 	public void e_delete() {
 		/* DELETE */
 		assertTrue("product can be deleted",  client.deleteProduct(PRODUCT_1.getId()));
-		assertNull("deleted product does not exist anymore", client.readProduct(PRODUCT_1.getId()));
+		assertThrows("deleted product does not exist anymore", NotFoundException.class,() -> {
+			client.readProduct(PRODUCT_1.getId());
+		});
 		assertEquals("product list is reduced on delete",prodlistBefore.size()+1,client.readAllProducts().size());
 	}
 
