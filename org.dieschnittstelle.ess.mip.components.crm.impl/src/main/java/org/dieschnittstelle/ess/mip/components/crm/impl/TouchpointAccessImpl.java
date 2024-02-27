@@ -5,6 +5,7 @@ import java.util.List;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
+import jakarta.transaction.Transactional;
 import org.dieschnittstelle.ess.mip.components.crm.api.CrmException;
 import org.dieschnittstelle.ess.mip.components.crm.api.TouchpointAccess;
 import org.dieschnittstelle.ess.mip.components.crm.crud.api.TouchpointCRUD;
@@ -17,6 +18,7 @@ import org.dieschnittstelle.ess.utils.interceptors.Logged;
 
 @Logged
 @ApplicationScoped
+@Transactional
 public class TouchpointAccessImpl implements TouchpointAccess {
 
 	protected static Logger logger = org.apache.logging.log4j.LogManager
