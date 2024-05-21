@@ -20,7 +20,6 @@ public class Chocolate implements IStockItem {
 		this.brandname = brandname;
 	}
 	
-	
 	@Override
 	public void initialise(int units,String brandname) {
 		show("Chocolate: intialise() invoked");
