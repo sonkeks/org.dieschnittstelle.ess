@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import org.apache.logging.log4j.Logger;
 
+@Entity
 @Table(name = "stock")
 public class StockItem {
 
@@ -11,10 +12,16 @@ public class StockItem {
 
 	// internally, we use an own id, but do not expose it to the users of this class,
 	// which will access instances by constraints on pos and/or product
+	@Id
+	@GeneratedValue
 	private long id;
 
+	@ManyToOne
+	@JoinColumn(name = "pos_id")
 	private PointOfSale pos;
 
+	@ManyToOne
+	@JoinColumn(name = "product_id")
 	private IndividualisedProductItem product;
 
 	private int price;
