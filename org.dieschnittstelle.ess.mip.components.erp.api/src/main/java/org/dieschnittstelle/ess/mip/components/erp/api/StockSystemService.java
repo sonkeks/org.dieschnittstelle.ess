@@ -51,4 +51,11 @@ public interface StockSystemService {
 	@Path("/pointsOfSale")
     List<Long> getPointsOfSale(@QueryParam("prodId") long productId);
 
+	@GET
+	@Path("/allProducts")
+	List<IndividualisedProductItem> getAllProductsOnStock();
+
+	@GET
+	@Path("/totalUnits")
+	int getTotalUnitsOnStock(@QueryParam("prodId") long productId);
 }

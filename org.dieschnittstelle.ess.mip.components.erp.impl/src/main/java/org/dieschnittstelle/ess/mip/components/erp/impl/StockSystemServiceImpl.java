@@ -35,21 +35,35 @@ public class StockSystemServiceImpl implements StockSystemService {
 
     @Override
     public void removeFromStock(long productId, long pointOfSaleId, int units) {
-
+        IndividualisedProductItem prod = (IndividualisedProductItem) productCRUD.readProduct(productId);
+        stockSystem.removeFromStock(prod, pointOfSaleId, units);
     }
 
     @Override
     public List<IndividualisedProductItem> getProductsOnStock(long pointOfSaleId) {
-        return List.of();
+        return stockSystem.getProductsOnStock(pointOfSaleId);
+    }
+
+    @Override
+    public List<IndividualisedProductItem> getAllProductsOnStock() {
+        return stockSystem.getAllProductsOnStock();
     }
 
     @Override
     public int getUnitsOnStock(long productId, long pointOfSaleId) {
-        return 0;
+        IndividualisedProductItem prod = (IndividualisedProductItem) productCRUD.readProduct(productId);
+        return stockSystem.getUnitsOnStock(prod, pointOfSaleId);
+    }
+
+    @Override
+    public int getTotalUnitsOnStock(long productId) {
+        IndividualisedProductItem prod = (IndividualisedProductItem) productCRUD.readProduct(productId);
+        return stockSystem.getTotalUnitsOnStock(prod);
     }
 
     @Override
     public List<Long> getPointsOfSale(long productId) {
-        return List.of();
+        IndividualisedProductItem prod = (IndividualisedProductItem) productCRUD.readProduct(productId);
+        return stockSystem.getPointsOfSale(prod);
     }
 }

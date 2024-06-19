@@ -3,6 +3,7 @@ package org.dieschnittstelle.ess.mip.client.apiclients;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dieschnittstelle.ess.entities.erp.PointOfSale;
 import org.dieschnittstelle.ess.mip.components.erp.api.StockSystemService;
 import org.dieschnittstelle.ess.mip.components.erp.api.StockSystem;
 import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
@@ -37,7 +38,7 @@ public class StockSystemClient implements StockSystem {
 
 	@Override
 	public List<IndividualisedProductItem> getAllProductsOnStock() {
-		return this.serviceProxy.getProductsOnStock(0);
+		return this.serviceProxy.getAllProductsOnStock();
 //		return new ArrayList<>();
 	}
 
@@ -49,7 +50,7 @@ public class StockSystemClient implements StockSystem {
 
 	@Override
 	public int getTotalUnitsOnStock(IndividualisedProductItem product) {
-		return this.serviceProxy.getUnitsOnStock(product.getId(),0);
+		return this.serviceProxy.getTotalUnitsOnStock(product.getId());
 //		return 0;
 	}
 
