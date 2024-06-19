@@ -25,13 +25,13 @@ public interface ProductCRUD {
 	@PUT
 	public AbstractProduct updateProduct(AbstractProduct update);
 	@GET
-	@Path("/{id}}")
+	@Path("/{id}")
 	public AbstractProduct readProduct(@PathParam("id") long productID);
 	@DELETE
-	@Path("/{id}}")
+	@Path("/{id}")
 	public boolean deleteProduct(@PathParam("id") long productID);
 	@GET
-	@Path("/{id}}/campaings")
+	@Path("/{id}/campaings")
 	public List<Campaign> getCampaignsForProduct(@PathParam("id") long productID);
 
 }

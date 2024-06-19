@@ -13,6 +13,7 @@ import jakarta.json.bind.annotation.JsonbTypeDeserializer;
 import jakarta.json.bind.annotation.JsonbTypeSerializer;
 import jakarta.persistence.*;
 
+@Entity
 @JsonbTypeSerializer(JsonbJsonTypeInfoHandler.class)
 public class Campaign extends AbstractProduct implements Serializable {
 
@@ -23,6 +24,7 @@ public class Campaign extends AbstractProduct implements Serializable {
 	 */
 	private static final long serialVersionUID = 4407600000386810001L;
 
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<ProductBundle> bundles;
 
 	public Campaign() {
@@ -37,7 +39,7 @@ public class Campaign extends AbstractProduct implements Serializable {
 
 	public Collection<ProductBundle> getBundles() {
 		return this.bundles;
-	}
+	} //what is wrong with this line?
 
 	public void setBundles(List<ProductBundle> bundles) {
 		this.bundles = bundles;

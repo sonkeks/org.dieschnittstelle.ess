@@ -12,6 +12,8 @@ import org.dieschnittstelle.ess.utils.interceptors.Logged;
 
 import java.util.List;
 
+import static org.dieschnittstelle.ess.utils.Utils.show;
+
 @ApplicationScoped
 @Transactional
 @Logged
@@ -35,7 +37,17 @@ public class ProductCRUDImpl implements ProductCRUD {
 
     @Override
     public AbstractProduct updateProduct(AbstractProduct update) {
-        return null;
+        AbstractProduct existingProd = em.find(AbstractProduct.class, update.getId());
+        if (existingProd != null) {
+            existingProd.setName(update.getName());
+            existingProd.setPrice(update.getPrice());
+            AbstractProduct mergedProd = em.merge(existingProd);
+            show("Updated product: " + update.getName());
+            return mergedProd;
+        } else {
+            show("Product to update does not exist");
+            return null;
+        }
     }
 
     @Override
@@ -45,11 +57,21 @@ public class ProductCRUDImpl implements ProductCRUD {
 
     @Override
     public boolean deleteProduct(long productID) {
-        return false;
+        AbstractProduct existingProd = em.find(AbstractProduct.class, productID);
+        if (existingProd != null) {
+            em.remove(existingProd);
+            show("Deleted product: " + productID);
+            return true;
+        } else {
+            show("Product to delete does not exist");
+            return false;
+        }
     }
 
     @Override
     public List<Campaign> getCampaignsForProduct(long productID) {
-        return List.of();
+        Query qu = em.createQuery("SELECT DISTINCT camp FROM Campaign camp JOIN camp.bundles bund WHERE bund.product.id = :productID");
+        qu.setParameter("productID", productID);
+        return qu.getResultList();
     }
 }
