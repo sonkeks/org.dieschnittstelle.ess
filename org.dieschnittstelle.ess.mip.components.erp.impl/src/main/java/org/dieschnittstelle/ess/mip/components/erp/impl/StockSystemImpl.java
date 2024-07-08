@@ -102,7 +102,7 @@ public class StockSystemImpl implements StockSystem {
         List<StockItem> stockItemsForProd = stockItemCRUD.readStockItemsForProduct(product);
         List<Long> pointsOfSaleIds = new ArrayList<>();
         for(StockItem stockItem : stockItemsForProd) {
-            pointsOfSaleIds.add(stockItem.getProduct().getId());
+            pointsOfSaleIds.add(stockItem.getPos().getId());
         }
         return pointsOfSaleIds;
     }
