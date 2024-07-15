@@ -18,6 +18,7 @@ import org.dieschnittstelle.ess.mip.components.crm.api.CustomerTracking;
 import org.dieschnittstelle.ess.mip.components.crm.api.TouchpointAccess;
 import org.dieschnittstelle.ess.mip.components.crm.crud.api.CustomerCRUD;
 import org.dieschnittstelle.ess.mip.components.erp.api.StockSystem;
+import org.dieschnittstelle.ess.mip.components.erp.api.StockSystemService;
 import org.dieschnittstelle.ess.mip.components.erp.crud.api.ProductCRUD;
 import org.dieschnittstelle.ess.mip.components.shopping.api.PurchaseService;
 import org.dieschnittstelle.ess.mip.components.shopping.api.ShoppingException;
@@ -137,7 +138,7 @@ public class PurchaseServiceImpl implements PurchaseService {
     private ProductCRUD productCRUD;
 
     @Inject
-    private StockSystem stockSystem;
+    private StockSystemService stockSystemService;
 
     private void checkAndRemoveProductsFromStock() {
         logger.info("checkAndRemoveProductsFromStock");
@@ -174,13 +175,13 @@ public class PurchaseServiceImpl implements PurchaseService {
 
     private void removeProductFromStockAtAllPOS(IndividualisedProductItem prod, int units) {
         int orderedUnits = units;
-        List<Long> pointsOfSale = stockSystem.getPointsOfSale(prod);
+        List<Long> pointsOfSale = stockSystemService.getPointsOfSale(prod.getId());
         for (Long pos : pointsOfSale) {
-            int unitsAtPOS = stockSystem.getUnitsOnStock(prod, pos);
+            int unitsAtPOS = stockSystemService.getUnitsOnStock(prod.getId(), pos);
             if (orderedUnits <= unitsAtPOS) {
-                stockSystem.removeFromStock(prod, pos, orderedUnits);
+                stockSystemService.removeFromStock(prod.getId(), pos, orderedUnits);
             } else if (orderedUnits != 0) {
-                stockSystem.removeFromStock(prod, pos, unitsAtPOS);
+                stockSystemService.removeFromStock(prod.getId(), pos, unitsAtPOS);
                 orderedUnits += (-unitsAtPOS);
             }
         }
